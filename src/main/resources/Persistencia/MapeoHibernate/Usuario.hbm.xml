@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2013 15:59:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="Modelo">   
+    <typedef name="rolTipo" class="org.hibernate.type.EnumType">
+        <param name="enumClass">Modelo.Rol</param>
+        <param name="type">12</param>
+    </typedef>
+    <class name="Usuario" table="Usuario">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property name="nombre" type="string" />
+        <property name="telefono" type="string" />
+        <property name="direccion" type="string" />
+        <property name="apellido" type="string" />
+        <property name="nick" type="string" />
+        <property name="clave" type="string" />        
+        <property name="documento" />        
+        <property name="respuestaSecreta" />        
+        <property name="preguntaSecreta" />        
+        <property name="fechaAlta" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate"/>    
+        <property name="fechaBaja" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate"/>    
+        <property name="fechaNacimiento" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate"/>    
+        <set name="roles" table="Rol_Usuario">
+            <key column="id"/>
+            <element column="roles" type="rolTipo"/>
+        </set>
+    </class>    
+</hibernate-mapping>

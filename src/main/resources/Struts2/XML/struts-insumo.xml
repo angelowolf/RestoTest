@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="insumo" extends="json" namespace="/insumo">        
+        <action name="listar" method="listar" class="Acciones.InsumoAction">
+            <result name="success" type="tiles">/insumobruto/todos.tiles</result>
+        </action>        
+        <action name="getModificar" method="postBuscarInsumo" class="Acciones.InsumoAction"/>
+      
+        <!--RUTAS DE EVENTOS DINAMICOS....-->
+        <action name="postBuscarInsumoAutoComplete" method="postBuscarInsumoAutoComplete" class="Acciones.InsumoAction">
+            <result type="json" > 
+                <param name="root">listaAC</param>
+            </result>            
+        </action>         
+    </package>
+</struts>

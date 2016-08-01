@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2013 15:59:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="Modelo">   
+    <class name="Receta" table="Receta">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property name="nombre"/>
+        <many-to-one name="categoriaReceta" column="id_categoria"/>
+        <set name="ingredientes" cascade="all-delete-orphan">
+            <key column="id_receta"/>
+            <one-to-many class="Modelo.Ingrediente"/>
+        </set>
+        <property name="fechaAlta" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime"/>    
+        <property name="fechaBaja" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime"/>    
+        <set name="recetas" cascade="all-delete-orphan">
+            <key column="id_receta_padre"/>
+            <one-to-many class="Modelo.DetalleReceta"/>
+        </set>
+    </class>    
+</hibernate-mapping>

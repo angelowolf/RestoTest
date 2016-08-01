@@ -1,0 +1,43 @@
+body {
+  background-color: #f9f9f9;
+}
+
+.panel, .alert, .form-control, .btn {
+  border-radius: 0;
+}
+
+.btn-ruhaj {
+  color: #fdfdfd;
+  background-color: #f8557d;
+  border-color: #f73d6a;
+}
+
+.btn-ruhaj:hover {
+  color: #fdfdfd;
+  background-color: #f62457;
+  border-color: #f50c44;
+}
+
+.vcentered {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  width: 200px;
+  height: 150px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.forgotpass a, .forgotpass i{
+  font-weight: bold;
+  color: #222;
+}
+
+.forgotpass:focus a, .forgotpass:hover a, .forgotpass:focus i, .forgotpass:hover i{
+  color: #f50c57 !important;
+  text-decoration: none;
+}
+

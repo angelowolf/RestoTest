@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2013 15:59:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="Modelo">   
+    <class name="Stock" table="Stock">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property name="cantidadMinima" />
+        <property name="cantidadActual"/>
+        <set name="detalleStocks" cascade="save-update">
+            <key column="id_stock"/>
+            <one-to-many class="Modelo.DetalleStock"/>
+        </set>
+    </class>    
+</hibernate-mapping>

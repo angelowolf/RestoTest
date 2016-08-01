@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2013 15:59:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="Modelo">   
+    <class name="Pedido" table="Pedido">
+        <cache usage="read-only"/>
+        <id column="id" name="id">
+            <generator class="identity"/>
+        </id>
+        <discriminator column="id" insert="false"/>
+        <many-to-one class="Modelo.EstadoPedido.EstadoPedido" column="id_estadoPedido" lazy="false" name="estadoPedido" not-found="ignore" outer-join="false"/>
+    </class>
+</hibernate-mapping>

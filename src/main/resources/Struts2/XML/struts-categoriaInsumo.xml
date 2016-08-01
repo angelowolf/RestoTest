@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="insumo-categoria" extends="json" namespace="/insumo/categoria">
+        <action name="getModificar" method="getModificar" class="Acciones.CategoriaInsumoAction"/>
+        <action name="postModificar" method="postModificar" class="Acciones.CategoriaInsumoAction"/>
+        <action name="registrar" method="registrar" class="Acciones.CategoriaInsumoAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.CategoriaInsumoAction"/>
+        <action name="listar" method="listar" class="Acciones.CategoriaInsumoAction">
+            <result name="success" type="tiles">/insumo/categoria/todos.tiles</result>
+        </action>
+        <action name="nuevo">
+            <result type="tiles">/insumo/categoria/alta.tiles</result>
+        </action>      
+    </package>
+</struts>

@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app version="3.0"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         metadata-complete="false">
-
-         
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!--Pagina que redirigira al producir un error 404, o una accion no encontrada (URL que no exista)-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/500.jsp</location>
+    </error-page>
+    <!--FIN ERROR 404-->  
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/login.jsp</welcome-file>
+    </welcome-file-list>
+    <!--Le asigna a todas las paginas HTML UTF-8. Para las tildes. Solucina error de struts al mandar por request acentos.-->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+    <!--FIN UTF-8-->
+    <!--Filtro de hibernate.-->
+    <filter>
+        <filter-name>HibernateFilter</filter-name>
+        <filter-class>FiltroHibernate.HibernateSessionRequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HibernateFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--FIN FILTRO HIBERNATE-->
+    <!--Filtro de Struts2-->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>struts.convention.action.packages</param-name>
+            <param-value>accion</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--FIN FILTRO SRUTS2-->
+    <!--Definicion del framework Tiles-->
+    <listener>
+        <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>      
+    </listener>    
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>Listener.ContextListener</listener-class>      
+    </listener>    
+    <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    <!--FIN TILES-->
 </web-app>
-

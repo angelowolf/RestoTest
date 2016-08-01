@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="receta-categoria" extends="json" namespace="/receta/categoria">
+        <action name="getModificar" method="getModificar" class="Acciones.CategoriaRecetaAction"/>
+        <action name="postModificar" method="postModificar" class="Acciones.CategoriaRecetaAction"/>
+        <action name="registrar" method="registrar" class="Acciones.CategoriaRecetaAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.CategoriaRecetaAction"/>
+        <action name="listar" method="listar" class="Acciones.CategoriaRecetaAction">
+            <result name="success" type="tiles">/receta/categoria/todos.tiles</result>
+        </action>
+        <action name="nuevo">
+            <result type="tiles">/receta/categoria/alta.tiles</result>
+        </action>      
+    </package>
+</struts>

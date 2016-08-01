@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+ 
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<!--    <appender name="fileAppenderInfo" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="E:/info.log" />
+        <param name="MaxBackupIndex" value="10"/>
+        <param name="MaxFileSize" value="5120KB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c.%M:%L - %m%n"/> 
+        </layout>  
+    </appender>-->
+    <appender name="consoleAppenderInfo" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c.%M:%L - %m%n"/> 
+        </layout>      
+    </appender>
+  
+    <!-- specify the logging level for loggers from other libraries -->
+    <logger name="com.opensymphony" additivity="false">
+        <level value="INFO" />
+        <!--<appender-ref ref="fileAppenderInfo" />-->
+        <appender-ref ref="consoleAppenderInfo" />
+    </logger>
+ 
+    <logger name="org.apache.struts2" additivity="false">
+        <level value="INFO" /> 
+        <!--<appender-ref ref="fileAppenderInfo" />-->
+        <appender-ref ref="consoleAppenderInfo" />
+    </logger>
+    <!-- for all other loggers log only info and above log messages -->
+    <root>
+        <priority value="INFO"/> 
+        <!--<appender-ref ref="fileAppenderInfo" />-->
+        <appender-ref ref="consoleAppenderInfo" />
+    </root> 
+     
+</log4j:configuration> 

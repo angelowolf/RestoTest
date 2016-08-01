@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="receta" extends="json" namespace="/receta">        
+        <action name="getModificar" method="getModificar" class="Acciones.RecetaAction"/>
+        <action name="postModificar" method="postModificar" class="Acciones.RecetaAction"/>
+        <action name="registrar" method="registrar" class="Acciones.RecetaAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.RecetaAction"/>
+        <action name="recuperar" method="recuperar" class="Acciones.RecetaAction"/>
+        <action name="listar" method="listar" class="Acciones.RecetaAction">
+            <result name="success" type="tiles">/receta/todos.tiles</result>
+        </action>
+        <action name="nuevo" class="Acciones.RecetaAction">
+            <result  type="tiles">/receta/alta.tiles</result>
+        </action>      
+        
+        <!--RUTAS DE EVENTOS DINAMICOS....-->
+        <action name="postBuscarInsumoBruto" method="postBuscarInsumo" class="Acciones.RecetaAction">
+            <result name="success">/WEB-INF/receta/tablaReceta.jsp</result>
+        </action>          
+        <action name="postBuscarRecetaAutoComplete" method="postBuscarRecetaAutoComplete" class="Acciones.RecetaAction">
+            <result type="json" >
+                <param name="root">listaAC</param>
+            </result>            
+        </action>         
+    </package>
+</struts>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="notificacion" extends="json" namespace="/notificacion">
+        <action name="listar" method="listar" class="Acciones.NotificacionAction">
+            <result name="success" type="tiles">/notificacion/todos.tiles</result>
+        </action>    
+        <action name="panel" method="panel" class="Acciones.NotificacionAction">
+            <result name="success">/WEB-INF/notificacion/panel.jsp</result>
+        </action>    
+        <action name="eliminar-seleccion" method="eliminarSeleccion" class="Acciones.NotificacionAction"/>
+        <action name="visto-seleccion" method="vistoSeleccion" class="Acciones.NotificacionAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.NotificacionAction"/>
+        <action name="visto" method="visto" class="Acciones.NotificacionAction"/>        
+        <action name="vistoDesdePanel" method="vistoDesdePanel" class="Acciones.NotificacionAction">   
+            <param name="root">action</param>       
+            <param name="ignoreHierarchy">false</param>            
+            <param name="includeProperties">codigo</param>
+        </action>       
+    </package>
+</struts>

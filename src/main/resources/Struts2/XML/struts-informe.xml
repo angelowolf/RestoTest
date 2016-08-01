@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="informe" extends="json" namespace="/informe">        
+        <action name="ver" method="ver" class="Acciones.InformeAction">
+            <result name="stock" type="redirectAction">
+                <param name="actionName">stock/ver</param>
+                <param name="id">%{id}</param>
+            </result>
+        </action>
+    </package>
+</struts>

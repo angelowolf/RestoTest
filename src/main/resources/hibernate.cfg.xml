@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="show_sql">false</property>
+    <!--
+        <property name="hibernate.connection.url">jdbc:mysql://127.7.1.130:3306/restaurante</property>
+        <property name="hibernate.connection.username">adminnKR1QLx</property>
+        <property name="hibernate.connection.password">fd-jReyR7DhZ</property>
+        -->
+        <!--<property name="hbm2ddl.auto">create-drop</property>-->
+        <!--<property name="hbm2ddl.auto">update</property>-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurante</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"/>
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!--Configuracion correspondiente al pool.-->
+        <property name="hibernate.c3p0.min_size">10</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.timeout">1800</property>
+        <property name="hibernate.c3p0.validate">true</property>
+        <property name="connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</property>
+        <!--FIN POOL-->
+        <mapping resource="Persistencia/MapeoHibernate/CategoriaReceta.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Usuario.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/EstadoPedido.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Pedido.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/CategoriaInsumo.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Insumo.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Stock.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/DetalleStock.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/DetalleInsumoElaborado.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Notificacion.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Receta.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/Ingrediente.hbm.xml"/>
+        <mapping resource="Persistencia/MapeoHibernate/DetalleReceta.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

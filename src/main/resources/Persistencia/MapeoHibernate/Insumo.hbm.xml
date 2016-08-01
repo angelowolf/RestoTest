@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-sep-2013 15:59:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="Modelo">   
+    <class name="Insumo" table="Insumo">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property name="nombre" type="string" />
+        <property name="unidadMedida">
+            <type name="org.hibernate.type.EnumType">
+                <param name="type">12</param>
+                <param name="enumClass">Modelo.UnidadMedida</param>
+            </type>
+        </property>
+        <property name="fechaAlta" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate"/>    
+        <property name="fechaBaja" type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate"/>    
+        <many-to-one name="stock" column="id_stock"/>
+        <many-to-one name="categoriaInsumo" column="id_categoria"/>
+        
+        <joined-subclass name="InsumoBruto" table="InsumoBruto">
+            <key column="id"  />
+            <property name="precioUnidad" />
+        </joined-subclass>
+        
+        <joined-subclass name="InsumoElaborado" table="InsumoElaborado">
+            <key column="id"/>
+            <!--<set name="detalleInsumoElaborados" cascade="save-update,merge, delete-orphan">-->
+            <set name="detalleInsumoElaborados" cascade="all-delete-orphan" order-by="id_insumoBruto">
+                <key column="id_InsumoElaborado"/>
+                <one-to-many class="Modelo.DetalleInsumoElaborado"/>
+            </set>
+        </joined-subclass>
+    </class>    
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="insumoBruto" extends="json" namespace="/insumobruto">
+        <action name="getModificar" method="getModificar" class="Acciones.InsumoBrutoAction"/>
+        <action name="postModificar" method="postModificar" class="Acciones.InsumoBrutoAction"/>
+        <action name="registrar" method="registrar" class="Acciones.InsumoBrutoAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.InsumoBrutoAction"/>
+        <action name="recuperar" method="recuperar" class="Acciones.InsumoBrutoAction"/>
+        <action name="listar" method="listar" class="Acciones.InsumoBrutoAction">
+            <result name="success" type="tiles">/insumobruto/todos.tiles</result>
+        </action>
+        <action name="nuevo" class="Acciones.InsumoBrutoAction">
+            <result  type="tiles">/insumobruto/alta.tiles</result>
+        </action>      
+        
+        <!--RUTAS DE EVENTOS DINAMICOS....-->
+        <action name="postBuscarInsumoBruto" method="postBuscarInsumo" class="Acciones.InsumoBrutoAction">
+            <result name="success">/WEB-INF/insumo/bruto/tablaInsumo.jsp</result>
+        </action>          
+        <action name="postBuscarInsumoBrutoAutoComplete" method="postBuscarInsumoBrutoAutoComplete" class="Acciones.InsumoBrutoAction">
+            <result type="json" >
+                <param name="root">listaAC</param>
+            </result>            
+        </action>         
+    </package>
+</struts>

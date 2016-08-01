@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="usuario" extends="json" namespace="/usuario">
+        <action name="editar" method="getModificar" class="Acciones.UsuarioAction"/>
+        <action name="registrar" method="registrar" class="Acciones.UsuarioAction"/>            
+        <action name="modificar" method="postModificar" class="Acciones.UsuarioAction"/>
+        <action name="eliminar" method="eliminar" class="Acciones.UsuarioAction"/>
+        <action name="recuperar" method="recuperar" class="Acciones.UsuarioAction"/>
+        <action name="blanquear" method="blanquear" class="Acciones.UsuarioAction"/>
+        <action name="listar" method="listar" class="Acciones.UsuarioAction">
+            <result name="success" type="tiles">/usuario/todos.tiles</result>
+        </action>    
+        <action name="nuevo" class="Acciones.UsuarioAction">
+            <result type="tiles">/usuario/alta.tiles</result>
+        </action>
+        <action name="ver-perfil" method="getModificarPerfil" class="Acciones.UsuarioAction"/>
+        <action name="modificar-perfil" method="postModificarPerfil" class="Acciones.UsuarioAction"/>
+    </package>
+</struts>
